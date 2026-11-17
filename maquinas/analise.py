@@ -2,5 +2,5 @@
 
 
 def analizar(vendas):
-    # Persoa D: escribe aquí o código da túa ficha
-    raise NotImplementedError("Falta a análise (persoa D)")
+    grupos = vendas.groupby(["categoria", "maquina"], as_index=False)
+    return grupos[["unidades", "importe"]].sum()
