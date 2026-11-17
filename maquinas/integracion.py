@@ -2,5 +2,6 @@
 
 
 def integrar(vendas, produtos):
-    # Persoa C: escribe aquí o código da túa ficha
-    raise NotImplementedError("Falta a integración (persoa C)")
+    df = vendas.merge(produtos, on="produto", how="left", validate="m:1")
+    df["importe"] = (df["unidades"] * df["prezo"]).round(2)
+    return df
